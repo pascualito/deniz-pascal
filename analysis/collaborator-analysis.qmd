@@ -2,4 +2,20 @@
 title: "Collaborator Analysis"
 format: html
 editor: visual
+author: Deniz Vural
+Exercise: Explore, Clean, and Wrangle Data
 ---
+## load the library
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(here)
+```
+
+## read and store the data frame
+```{r}
+lobster_traps <- read_csv("~/deniz-pascal/data/Lobster_Trap_Counts_All_Years_20210519.csv")
+```
+
