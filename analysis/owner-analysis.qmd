@@ -17,4 +17,38 @@ library(here)
 ```{r}
 lobster_abundance <- read_csv("~/deniz-pascal/data/Lobster_Abundance_All_Years_20220829.csv")
 ```
+```{r}
+glimpse(lobster_abundance) #look at data
+```
+
+
+```{r}
+lobster_abundance <-lobster_abundance %>% 
+  mutate(SIZE_MM = na_if(SIZE_MM,-99999))
+
+
+```
+
+```{r}
+not_napl <- lobster_abundance %>% 
+    filter(SITE != "NAPL")
+```
+
+```{r}
+aque_70mm <- lobster_abundance %>% 
+    filter(SITE == "AQUE" & SIZE_MM >= 70)
+```
+
+
+```{r}
+max_lobster <- lobster_abundance %>% 
+  group_by(SITE, MONTH) %>% 
+  summarize(MAX_LENGTH = max(SIZE_MM, na.rm = TRUE))
+```
+
+
+
+
+
+
 
