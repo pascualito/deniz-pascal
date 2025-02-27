@@ -19,3 +19,20 @@ library(here)
 lobster_traps <- read_csv("~/deniz-pascal/data/Lobster_Trap_Counts_All_Years_20210519.csv")
 ```
 
+## convert missing values
+```{r}
+# `group_by() %>% summarize()` practice
+lobster_traps <- lobster_traps %>% 
+    mutate(TRAPS = na_if(TRAPS, -99999))
+
+not_napl <- lobster_traps %>% 
+    filter(SITE != "NAPL")
+
+carp_20_traps <- lobster_traps %>% 
+  filter(SITE == "CARP" & TRAPS > 20)
+
+max_traps <- lobster_traps %>% 
+  group_by(SITE, MONTH) %>% 
+  summarize(MAX_TRAPS = max(TRAPS, na.rm = TRUE))
+```
+
