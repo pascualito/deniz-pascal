@@ -2,5 +2,19 @@
 title: "Owner Analysis"
 format: html
 editor: visual
+author: Pascal
 ---
+
+##Exercise: Explore, clean, wrangle data
+
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(here)
+```
+```{r}
+lobster_abundance <- read_csv("~/deniz-pascal/data/Lobster_Abundance_All_Years_20220829.csv")
+```
 
