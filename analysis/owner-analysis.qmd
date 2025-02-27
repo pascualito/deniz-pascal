@@ -53,6 +53,22 @@ max_lobster <- lobster_abundance %>%
   summarize(MAX_LENGTH = max(SIZE_MM, na.rm = TRUE))
 ```
 
+## Exercise: Data Visualization 
+
+# Multi-panel plot showing carapace length
+```{r}
+ggplot(data = lobster_abundance, 
+       aes(x = SIZE_MM)) +
+    geom_histogram() +
+    facet_wrap(~SITE)
+```
+# group by site and year
+```{r}
+lobsters_summarize <- lobster_abundance %>% 
+  group_by(SITE, YEAR) %>% 
+  summarize(COUNT = n())
+```
+
 
 
 
