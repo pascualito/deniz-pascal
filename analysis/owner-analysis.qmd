@@ -14,14 +14,18 @@ library(ggplot2)
 library(tidyr)
 library(here)
 ```
+# load in data
+
 ```{r}
 lobster_abundance <- read_csv("~/deniz-pascal/data/Lobster_Abundance_All_Years_20220829.csv")
 ```
+# Have a look at the data
+
 ```{r}
 glimpse(lobster_abundance) #look at data
 ```
 
-
+# Change missing data format
 ```{r}
 lobster_abundance <-lobster_abundance %>% 
   mutate(SIZE_MM = na_if(SIZE_MM,-99999))
@@ -29,10 +33,13 @@ lobster_abundance <-lobster_abundance %>%
 
 ```
 
+# Filter to remove obs from Naples reef
 ```{r}
 not_napl <- lobster_abundance %>% 
     filter(SITE != "NAPL")
 ```
+
+# Subset of data at Arroyo Quemado, with size > 70 mm 
 
 ```{r}
 aque_70mm <- lobster_abundance %>% 
